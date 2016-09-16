@@ -24,6 +24,7 @@
 - (void)removeCurrentObserver {
     if (self.info) {
         [self.info removeObserver:self forKeyPath:[CTPeripheralInfo keyPathSeenCount]];
+        [self.info removeObserver:self forKeyPath:[CTPeripheralInfo keyPathManufactureData]];
     }
 }
 
@@ -65,8 +66,8 @@
  
     dispatch_async(dispatch_get_main_queue(), ^{
         
-//        self.textLabel.text =  [NSString stringWithFormat:@"%@ (%@) %li", self.info.name, self.info.identifier, (long)(self.info.seenCount + 1)];
-        self.textLabel.text =  [NSString stringWithFormat:@"%@ (%@)", self.info.name, self.info.identifier];
+//        detailTextLabel =  [NSString stringWithFormat:@"%@ (%@) %li", self.info.name, self.info.identifier, (long)(self.info.seenCount + 1)];
+        self.detailTextLabel.text =  [NSString stringWithFormat:@"%@ (%@)", self.info.name, self.info.identifier];
     });
     
 }
@@ -75,7 +76,7 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
         
-        self.detailTextLabel.text =  [NSString stringWithFormat:@"%@", self.info.manufactureData];
+        self.textLabel.text =  [NSString stringWithFormat:@"%@", self.info.manufactureData];
     });
 }
 
